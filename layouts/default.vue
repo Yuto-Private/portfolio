@@ -1,5 +1,12 @@
 <template>
-  <div>
-    <nuxt />
-  </div>
+  <nuxt />
 </template>
+
+<script>
+import TheHeader from '@/components/TheHeader'
+export default {
+  components: {
+    TheHeader
+  }
+}
+</script>

@@ -1,24 +1,49 @@
 <template>
-  <div class="container">
-    <p><span>hoge</span></p>
-  </div>
+  <main class="portfolio">
+
+    <section class='hero'>
+      <div class='hero_inner'>
+        <h1>Yuto Takahashi</h1>
+        <p>Engineer</p>
+      </div>
+    </section>
+
+    <Works/>
+    
+  </main>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+import Works from '@/components/Works'
 export default {
   components: {
-    Logo
+    Works
   }
 }
 </script>
 
 <style lang="scss">
 
-p {
-  span {
-    font-size: 20px;
+.hero {
+  position: relative;
+  height: 550px;
+  &_inner {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    letter-spacing: 6px;
+    h1 {
+      font-size: 45px;
+      letter-spacing: 6px;
+    }
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #9a9b9b;
+    }
   }
 }
 
