@@ -1,5 +1,8 @@
 <template>
-  <nuxt />
+  <main class='portfolio'>
+    <TheHeader />
+    <nuxt />
+  </main>
 </template>
 
 <script>

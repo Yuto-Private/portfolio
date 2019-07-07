@@ -1,25 +1,31 @@
 <template>
-  <nav>
-    <ul class="header">
-      <li><a href=''>Portfolio</a></li>
-      <li><a href=''>About</a></li>
-    </ul>
-  </nav>
+  <section class='hero'>
+    <div class='hero_inner'>
+      <h1>Yuto Takahashi</h1>
+      <p>Web Engineer</p>
+    </div>
+  </section>
 </template>
 
 <style lang="scss">
 
-.header {
+.hero {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 20px;
-  li {
-    &:first-child {
-      padding-left: 0;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  &_inner {
+    text-align: center;
+    letter-spacing: 6px;
+    h1 {
+      font-size: 45px;
+      letter-spacing: 6px;
     }
-    padding-left: 10px;
-    letter-spacing: 1px;
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #9a9b9b;
+    }
   }
 }
 

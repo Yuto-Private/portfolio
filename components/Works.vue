@@ -10,6 +10,9 @@
       <li>
         <img src='~/assets/images/kilta.jpg' alt=''>
       </li>
+      <li>
+        <img src='~/assets/images/kumiki.jpg' alt=''>
+      </li>
     </ul>
   </section>
 </template>
@@ -17,16 +20,18 @@
 <style lang="scss">
 
 .works {
-  background-color: #ebebeb;
-  padding: 30px;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
   &_list {
-    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     li {
-      width: 30%;
+      width: 22%;
+      border: 1px solid #000;
     }
   }
 }
