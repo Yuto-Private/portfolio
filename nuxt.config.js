@@ -29,6 +29,13 @@ module.exports = {
   */
   plugins: [
   ],
+
+  router: {
+    middleware: 'stats'
+  },
+
+  watchQuery: true,
+
   /*
   ** Nuxt.js modules
   */
