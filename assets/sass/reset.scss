@@ -62,7 +62,9 @@ img {
 }
 
 body {
-  font-family: "Open Sans", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, "ms pgothic", sans-serif;
+  // font-family: "Open Sans", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, "ms pgothic", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+  font-weight: lighter;
 }
 
 a {

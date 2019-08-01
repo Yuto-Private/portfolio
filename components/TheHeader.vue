@@ -1,15 +1,10 @@
 <template>
-  <section class='hero'>
-    <div class='hero_inner'>
-      <h1>Yuto Takahashi</h1>
-      <p>Web Engineer</p>
-    </div>
-  </section>
+
 </template>
 
 <style lang="scss">
 
-.hero {
+.header {
   display: flex;
   align-items: center;
   justify-content: center;

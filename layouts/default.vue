@@ -1,7 +1,9 @@
 <template>
   <main class='portfolio'>
-    <TheHeader />
-    <nuxt />
+    <div class="portfolio_inner">
+      <TheHeader />
+      <nuxt />
+    </div>
   </main>
 </template>
 
