@@ -7,17 +7,7 @@
       </div>
     </section>
     <section class="works">
-      <ul class="works_list">
-        <nuxt-link 
-          tag='li'
-          :to="'detail/'+post.fields.slag"
-          v-for="(post, index) in posts"
-          :key="index"
-          class="post"
-        >
-          {{ post.fields.title }}
-        </nuxt-link>
-      </ul>
+      <CardList :posts="posts" />
     </section>
   </div>
 </template>
@@ -44,16 +34,21 @@
   }
 }
 
+.works {
+  width: 960px;
+  margin: 0 auto;
+}
+
 </style>
 
 <script>
 
   import { client } from '~/plugins/contentful.js'
-  import About from '@/components/About'
+  import CardList from '@/components/CardList'
 
   export default {
     components: {
-      About
+      CardList
     },
     asyncData(context) {
       return client.getEntries({
