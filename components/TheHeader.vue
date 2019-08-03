@@ -30,7 +30,7 @@
     top: 0;
     right: 3px;
     padding: 12px 7px 10px 10px;
-    background-color: #CC6699;
+    background-color: $mainColor;
     z-index: 3;
     &_inner {
       position: relative;
@@ -74,8 +74,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #CC6699;
-    z-index: 2;
+    background-color: $mainColor;
+    z-index: 10;
     color: #fff;
     transition: all .4s;
     .active & {
