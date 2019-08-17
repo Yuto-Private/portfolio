@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{opacity:0.1;enable-background:new    ;}
+	.st2{opacity:0.2;}
+	.st3{fill:#FFFFFF;}
+</style>
+<title>mark_people</title>
+<g>
+	<g>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="99.8016" y1="1555.4326" x2="170.2066" y2="1594.86" gradientTransform="matrix(0.9909 0.1349 -0.1349 0.9909 113.5202 -1547.9686)">
+			<stop  offset="0" style="stop-color:#1E7DDE"/>
+			<stop  offset="1" style="stop-color:#00C4C4"/>
+		</linearGradient>
+		<path class="st0" d="M31,86.7L1,14.2c-2-4.6,2-9.7,6.9-9l87.6,12L42.3,88.2C39.3,92.3,33,91.4,31,86.7z"/>
+	</g>
+	<path class="st1" d="M25.3,7.6L7.9,5.3c-5.1-0.7-8.8,4.3-6.9,9l30,72.5c2,4.7,8.2,5.4,11.3,1.5l10.5-14.1L25.3,7.6z"/>
+	<g class="st2">
+		<polygon class="st3" points="25.3,7.6 52.9,74.1 95.5,17.1 		"/>
+	</g>
+</g>
+</svg>
