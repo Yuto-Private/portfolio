@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link tag='li' :to="'detail/'+slag+'/'" class="card">
+  <nuxt-link tag='li' :to="'/detail/'+slag+'/'" class="card">
     <div class='card_thumbnail'>
       <img :src='thumb' alt=''>
     </div>
@@ -11,8 +11,8 @@
 </template>
 
 <style scoped lang='scss'>
-  .card {
 
+  .card {
     width: 30%;
     cursor: pointer;
 
@@ -65,6 +65,7 @@
     }
 
   }
+
 </style>
 
 

@@ -29,6 +29,7 @@ module.exports = {
   */
   plugins: [
     '~/plugins/contentful',
+    '~plugins/particles.js'
   ],
 
   router: {
@@ -40,23 +41,15 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    '@nuxtjs/style-resources',
-    '@nuxtjs/markdownit'
-  ],
+  modules: ['@nuxtjs/style-resources'],
 
   styleResources: {
     scss: [
       '~/assets/sass/reset.scss',
+      '~/assets/sass/animetion.scss',
       '~/assets/sass/variable.scss',
       '~/assets/sass/mixin.scss'
     ]
-  },
-
-  markdownit: {
-    injected: true,
-    breaks: true,
-    html: true
   },
 
   /*

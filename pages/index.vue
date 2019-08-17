@@ -1,54 +1,226 @@
 <template>
-  <div class="wrapper">
-    <section class='hero'>
-      <div class='hero_inner'>
-        <h1>Yuto Takahashi</h1>
-        <p>Web Engineer</p>
+  <div class="top">
+
+    <TopTextAnimetion />
+
+    <section class="feature rise">
+      <h3 class='feature_title'><span>PORTFOLIO</span></h3>
+      <div class='feature_contents'>
+        <CardList :posts="posts" />
+      </div>
+      <div class='feature_texture'>
       </div>
     </section>
-    <section class="works">
-      <CardList :posts="posts" />
+
+    <section class="feature reversal rise">
+      <h3 class='feature_title'><span>PROFILE</span></h3>
+      <div class='feature_contents'>
+        <div class='profile'>
+          <div class='profile_image glitch'>
+            <div class='glitch_img'></div>
+            <div class='glitch_img'></div>
+            <div class='glitch_img'></div>
+            <div class='glitch_img'></div>
+            <div class='glitch_img'></div>
+          </div>
+          <div class='profile_detail'>
+            <div class='profile_detail_inner'>
+              <h4>Yuto Takahashi</h4>
+              <dl class="profile_detail_item">
+                <dt>SKILL SET</dt>
+                <dd>
+                  <img v-for='item in items' :src="'/icon/'+item+'.svg'">
+                </dd>
+              </dl>
+              <dl class="profile_detail_item">
+                <dt>BIOGRAPHY</dt>
+                <dd>
+                  adidas・reebok ECサイト運用チームのリーダー・リードエンジニアとして業務に従事しております。
+                  業務では主にReactやadidasチーム独自のテンプレートエンジンを用いたLP用のモジュール作成や、
+                  アニメーションの多いランディングページの実装と技術的なディレクション、チームビルディングなどを担当し、
+                  副業ではLPやwordpressサイトの作成や更新なども引き受け、個人開発ではvueやnuxtの勉強中です。
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='feature_texture'>
+      </div>
     </section>
+
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-  &_inner {
-    text-align: center;
-    letter-spacing: 6px;
-    h1 {
-      font-size: 45px;
-      letter-spacing: 6px;
-    }
-    p {
-      font-size: 20px;
-      margin-top: 10px;
-      color: #9a9b9b;
+  .rise {
+    opacity: 0;
+    transition: opacity .5s cubic-bezier(.17,.67,.65,.54);
+    &.active {
+      opacity: 1;
     }
   }
-}
 
-.works {
-  width: 960px;
-  margin: 0 auto;
-}
+  .feature {
+    position: relative;
+    padding: 50px 0;
+    margin-top: 200px;
+
+    &.reversal {
+      padding: 50px 0 110px;
+    }
+
+    &_title {
+      font-family: 'FujillaOne',sans-serif;
+      position: absolute;
+      font-size: 40px;
+      letter-spacing: 10px;
+      top: 0;
+      right: 0;
+      transform: rotate(90deg) translate(62%, -200%);
+      z-index: 10;
+      .reversal & {
+        right: auto;
+        left: 0;
+        transform: rotate(90deg) translate(62%, 130%);
+      }
+    }
+
+    &_contents {
+      position: relative;
+      width: 90%;
+      z-index: 2;
+      .reversal & {
+        margin-left: auto;
+      }
+    }
+
+    &_texture {
+      position: absolute;
+      width: 80%;
+      height: 100%;
+      right: 0;
+      top: 0;
+      background-color: $mainColor;
+      opacity: .5;
+      .reversal & {
+        right: auto;
+        left: 0;
+        background-color: $subColor;
+      }
+    }
+  }
+
+  .profile {
+    
+    display: flex;
+
+    &_image {
+      width: 40%;
+      position: relative;
+    }
+
+    .glitch {
+      position: relative;
+      width: 40%;
+      height: 40vw;
+      min-height: 550px;
+      overflow: hidden;
+      &_img {
+        position: absolute;
+        top: calc(-1 * 5px);
+        left: calc(-1 * 10px);
+        width: calc(100% + 10px * 2);
+        height: calc(100% + 5px * 2);
+        background: url(/images/about.jpg) no-repeat 50% 0;
+        background-size: cover;
+        transform: translate3d(0,0,0);
+        &:nth-child(n+2) {
+          animation-duration: 4s;
+          animation-delay: 2s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+        &:nth-child(2) {
+          background-color: none;
+          background-blend-mode: transpalent;
+          animation-name: glitch-anim-1;
+        }
+        &:nth-child(3) {
+          background-color: none;
+          background-blend-mode: transpalent;
+          animation-name: glitch-anim-2;
+        }
+        &:nth-child(4) {
+          background-color: none;
+          background-blend-mode: transpalent;
+          animation-name: glitch-anim-3;
+        }
+        &:nth-child(5) {
+          background-color: none;
+          background-blend-mode: transpalent;
+          animation-name: glitch-anim-flash;
+        }
+      }
+    }
+
+    &_detail {
+      width: 60%;
+      background-color: rgba(255,255,255,1);
+      color: #000;
+      margin: 60px 0 -60px;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h4 {
+        font-family: 'FujillaOne',sans-serif;
+        font-size: 40px;
+        letter-spacing: 3px;
+        border-bottom: 2px dashed #000;
+        padding-bottom: 6px;
+      }
+
+      &_item {
+        dt {
+          font-family: 'FujillaOne',sans-serif;
+          font-size: 25px;
+          margin-top: 40px;
+        }
+        dd {
+          margin-top: 15px;
+          font-size: 16px;
+          line-height: 1.65;
+          letter-spacing: 2px;
+          font-weight: normal;
+          img {
+            width: 10%;
+            max-width: 40px;
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+
+  }
 
 </style>
 
 <script>
 
+  import { TweenMax } from 'gsap'
   import { client } from '~/plugins/contentful.js'
+  import TopTextAnimetion from '@/components/TopTextAnimetion'
   import CardList from '@/components/CardList'
 
   export default {
+    data() {
+      return { items: [ 'html5','css3','javascript','php','git','wordpress','nuxt','react' ] }
+    },
     components: {
-      CardList
+      CardList,TopTextAnimetion
     },
     asyncData(context) {
       return client.getEntries({
@@ -58,9 +230,42 @@
       .then( document => {
         return { posts:document.items }
       })
-      .catch(function(error) {
+      .catch( error => {
         console.log("Error getting document:", error);
       });
+    },
+    mounted() {
+
+      let windowHeight = innerHeight;
+      window.addEventListener('resize',() => {
+        windowHeight = innerHeight;
+      });
+
+      // 要素を柔らかく表示
+      const riseTarget = [].slice.call(document.querySelectorAll('.feature'));
+
+      window.addEventListener('scroll',() => {
+        riseTarget.forEach(element => {
+          const elementRects = element.getBoundingClientRect();
+          if( elementRects.top <= windowHeight / 1.5 ){
+            element.classList.add('active');
+          }
+        });
+      });
+
+
+      // パララックス
+      const parallaxTarget = [].slice.call(document.querySelectorAll('.feature_contents'));
+
+      window.addEventListener('scroll',() => {
+        parallaxTarget.forEach(element => {
+          const elementRects = element.getBoundingClientRect();
+          if( elementRects.top <= windowHeight ){
+            element.setAttribute('style','transform: translateY(' + elementRects.top * .02 + '%' + ')');
+          }
+        });
+      });
+
     }
   }
 

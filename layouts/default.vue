@@ -1,17 +1,20 @@
 <template>
   <main class='portfolio'>
-    <div class="portfolio_inner">
-      <TheHeader />
-      <nuxt />
-    </div>
+    <TheHeader />
+    <Particles />
+    <nuxt />
+    <TheFooter />
   </main>
 </template>
 
 <script>
+import Particles from '~/components/particles'
 import TheHeader from '@/components/TheHeader'
+import TheFooter from '@/components/TheFooter'
+
 export default {
   components: {
-    TheHeader
+    TheHeader,Particles,TheFooter
   }
 }
 </script>

@@ -1,4 +1,4 @@
-<template lang="md">
+<template>
 
   <article class="pageDetail">
     <section class="hero">
@@ -40,9 +40,10 @@
 
 
 <style lang="scss">
+
  .pageDetail {
    max-width: 960px;
-   margin: 0 auto;
+   margin: 60px auto;
 
   .hero {
     &_heading {
@@ -110,6 +111,7 @@
     }
   }
  }
+ 
 </style>
 
 
