@@ -16,13 +16,13 @@
       <h3 class='feature_title'><span>PROFILE</span></h3>
       <div class='feature_contents'>
         <div class='profile'>
-          <div class='profile_image glitch'>
-            <div class='glitch_img'></div>
-            <div class='glitch_img'></div>
-            <div class='glitch_img'></div>
-            <div class='glitch_img'></div>
-            <div class='glitch_img'></div>
-          </div>
+          <Glitch 
+            :className="'profile_image'" 
+            :width="'40%'" 
+            :height="'40vw'"
+            :minHeight="'550px'" 
+            :path="'/images/about.jpg'" 
+          />
           <div class='profile_detail'>
             <div class='profile_detail_inner'>
               <h4>Yuto Takahashi</h4>
@@ -121,50 +121,6 @@
       position: relative;
     }
 
-    .glitch {
-      position: relative;
-      width: 40%;
-      height: 40vw;
-      min-height: 550px;
-      overflow: hidden;
-      &_img {
-        position: absolute;
-        top: calc(-1 * 5px);
-        left: calc(-1 * 10px);
-        width: calc(100% + 10px * 2);
-        height: calc(100% + 5px * 2);
-        background: url(/images/about.jpg) no-repeat 50% 0;
-        background-size: cover;
-        transform: translate3d(0,0,0);
-        &:nth-child(n+2) {
-          animation-duration: 4s;
-          animation-delay: 2s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-        &:nth-child(2) {
-          background-color: none;
-          background-blend-mode: transpalent;
-          animation-name: glitch-anim-1;
-        }
-        &:nth-child(3) {
-          background-color: none;
-          background-blend-mode: transpalent;
-          animation-name: glitch-anim-2;
-        }
-        &:nth-child(4) {
-          background-color: none;
-          background-blend-mode: transpalent;
-          animation-name: glitch-anim-3;
-        }
-        &:nth-child(5) {
-          background-color: none;
-          background-blend-mode: transpalent;
-          animation-name: glitch-anim-flash;
-        }
-      }
-    }
-
     &_detail {
       width: 60%;
       background-color: rgba(255,255,255,1);
@@ -214,13 +170,14 @@
   import { client } from '~/plugins/contentful.js'
   import TopTextAnimetion from '@/components/TopTextAnimetion'
   import CardList from '@/components/CardList'
+  import Glitch from '@/components/Glitch'
 
   export default {
     data() {
       return { items: [ 'html5','css3','javascript','php','git','wordpress','nuxt','react' ] }
     },
     components: {
-      CardList,TopTextAnimetion
+      CardList,TopTextAnimetion,Glitch
     },
     asyncData(context) {
       return client.getEntries({
