@@ -106,6 +106,7 @@
 
 <script>
 
+  import { mapState } from 'vuex'
   import { TweenMax } from 'gsap'
   import { client } from '~/plugins/contentful.js'
   import TopTextAnimetion from '@/components/TopTextAnimetion'
@@ -116,6 +117,11 @@
   export default {
     data() {
       return { items: [ 'html5','css3','javascript','php','git','wordpress','nuxt','react' ] }
+    },
+    computed: {
+      hoge() {
+        return mapState(['responsive/isDevice']);
+      }
     },
     components: {
       TopTextAnimetion,Feature,CardList,Glitch
@@ -134,23 +140,17 @@
     },
     mounted() {
 
-      let windowHeight = innerHeight;
-      window.addEventListener('resize',() => {
-        windowHeight = innerHeight;
-      });
-
       // 要素を柔らかく表示
       const riseTarget = [].slice.call(document.querySelectorAll('.feature'));
 
       window.addEventListener('scroll',() => {
         riseTarget.forEach(element => {
           const elementRects = element.getBoundingClientRect();
-          if( elementRects.top <= windowHeight / 1.5 ){
+          if( elementRects.top <= this.$store.state.responsive.isDevice.size.h / 1.5 ){
             element.classList.add('active');
           }
         });
       });
-
 
       // パララックス
       const parallaxTarget = [].slice.call(document.querySelectorAll('.feature_contents'));
@@ -158,7 +158,7 @@
       window.addEventListener('scroll',() => {
         parallaxTarget.forEach(element => {
           const elementRects = element.getBoundingClientRect();
-          if( elementRects.top <= windowHeight ){
+          if( elementRects.top <= this.$store.state.responsive.isDevice.size.h ){
             element.setAttribute('style','transform: translateY(' + elementRects.top * .02 + '%' + ')');
           }
         });

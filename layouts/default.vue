@@ -13,6 +13,11 @@ import TheFooter from '@/components/TheFooter'
 export default {
   components: {
     particles,TheFooter
+  },
+  mounted() {
+    window.addEventListener('resize', () => {
+      this.$store.commit('responsive/update');
+    })
   }
 }
 </script>
