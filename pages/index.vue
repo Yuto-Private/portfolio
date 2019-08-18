@@ -72,7 +72,7 @@
       justify-content: center;
 
       h4 {
-        font-family: 'FujillaOne',sans-serif;
+        @include font_family(primary);
         font-size: 40px;
         letter-spacing: 3px;
         border-bottom: 2px dashed #000;
@@ -81,7 +81,7 @@
 
       &_item {
         dt {
-          font-family: 'FujillaOne',sans-serif;
+          @include font_family(primary);
           font-size: 25px;
           margin-top: 40px;
         }

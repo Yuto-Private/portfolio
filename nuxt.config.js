@@ -29,7 +29,7 @@ module.exports = {
   */
   plugins: [
     '~/plugins/contentful',
-    '~plugins/particles.js'
+    '~/plugins/particles'
   ],
 
   router: {
@@ -46,6 +46,7 @@ module.exports = {
   styleResources: {
     scss: [
       '~/assets/sass/reset.scss',
+      '~/assets/sass/font.scss',
       '~/assets/sass/animetion.scss',
       '~/assets/sass/variable.scss',
       '~/assets/sass/mixin.scss'

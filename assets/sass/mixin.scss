@@ -19,44 +19,16 @@
 }
 
 /*
- * デバイス毎に表示をコントロールするクラス
+ * font-family
  */
 
-.mod-displayNone_mobile {
-  @include mediaQuery($breakpoint: mobile) {
-    display: none !important;
-  }
-}
+@mixin font_family($type) {
 
-.mod-displayNone_mobile_only {
-  @include mediaQuery($breakpoint: iphone5) {
-    display: none !important;
-  }
-}
+  @if $type == default {
+    font-family: "NotoSansCJKjp", "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+  } 
+  @if $type == primary {
+    font-family: 'FujillaOne',sans-serif;
+  } 
 
-.mod-displayNone_tablet {
-  @include mediaQuery($breakpoint: tablet) {
-    display: none !important;
-  }
-}
-
-.mod-displayNone_desktop {
-  @include mediaQuery() {
-    display: none !important;
-  }
-}
-
-
-.page-enter-active, .page-leave-active {
-  transition: opacity .5s;
-}
-.page-enter, .page-leave-to {
-  opacity: 0;
-}
-
-.about-enter-active, .about-leave-active {
-  transition: opacity 1s;
-}
-.about-enter, .about-leave-active {
-  opacity: 0;
 }

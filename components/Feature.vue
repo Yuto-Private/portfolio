@@ -39,7 +39,7 @@ export default {
     }
 
     &_title {
-      font-family: 'FujillaOne',sans-serif;
+      @include font_family(primary);
       position: absolute;
       font-size: 40px;
       letter-spacing: 10px;

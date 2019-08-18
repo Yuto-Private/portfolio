@@ -15,6 +15,7 @@
 
   .TopTextAnimetion {
 
+    @include font_family(primary);
     width: 100vw;
     height: 100vh;
     padding: 3vw;
@@ -23,7 +24,6 @@
     align-items: center;
     text-align: center;
     position: relative;
-    font-family: 'FujillaOne',sans-serif;
     letter-spacing: 5px;
 
     &_inner {
@@ -65,24 +65,10 @@
         border-left: 2px solid #fff;
         border-bottom: 2px solid #fff;
         transform: rotateZ(-45deg);
-        animation: sdb 1.5s infinite;
+        animation: scrollDown 1.5s infinite;
         box-sizing: border-box;
       }
 
-    }
-
-    @keyframes sdb {
-      0% {
-        transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
-        opacity: 0;
-      }
     }
 
   }
