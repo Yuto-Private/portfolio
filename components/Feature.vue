@@ -22,12 +22,34 @@ export default {
         transform: 'rotate(90deg) translate('+ this.titlePositionAdjust +')'
       }
     }
+  },
+
+  mounted() {
+    // 要素を柔らかく表示
+    const riseTarget = [].slice.call(document.querySelectorAll('.feature'));
+
+    window.addEventListener('scroll',() => {
+      riseTarget.forEach(element => {
+        const elementRects = element.getBoundingClientRect();
+        if( elementRects.top <= this.$store.state.responsive.isDevice.size.h / 1.5 ){
+          element.classList.add('active');
+        }
+      });
+    });
   }
 
 }
 </script>
 
 <style lang='scss'>
+
+  .rise {
+    opacity: 0;
+    transition: opacity .5s cubic-bezier(.17,.67,.65,.54);
+    &.active {
+      opacity: 1;
+    }
+  }
 
   .feature {
     position: relative;

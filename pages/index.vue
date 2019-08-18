@@ -44,14 +44,6 @@
 
 <style lang="scss">
 
-  .rise {
-    opacity: 0;
-    transition: opacity .5s cubic-bezier(.17,.67,.65,.54);
-    &.active {
-      opacity: 1;
-    }
-  }
-
   .profile {
     
     display: flex;
@@ -106,8 +98,6 @@
 
 <script>
 
-  import { mapState } from 'vuex'
-  import { TweenMax } from 'gsap'
   import { client } from '~/plugins/contentful.js'
   import TopTextAnimetion from '@/components/TopTextAnimetion'
   import Feature from '@/components/Feature'
@@ -115,17 +105,15 @@
   import Glitch from '@/components/Glitch'
 
   export default {
+
     data() {
       return { items: [ 'html5','css3','javascript','php','git','wordpress','nuxt','react' ] }
     },
-    computed: {
-      hoge() {
-        return mapState(['responsive/isDevice']);
-      }
-    },
+
     components: {
       TopTextAnimetion,Feature,CardList,Glitch
     },
+
     asyncData(context) {
       return client.getEntries({
         content_type: 'detail',
@@ -138,23 +126,10 @@
         console.log("Error getting document:", error);
       });
     },
+
     mounted() {
-
-      // 要素を柔らかく表示
-      const riseTarget = [].slice.call(document.querySelectorAll('.feature'));
-
-      window.addEventListener('scroll',() => {
-        riseTarget.forEach(element => {
-          const elementRects = element.getBoundingClientRect();
-          if( elementRects.top <= this.$store.state.responsive.isDevice.size.h / 1.5 ){
-            element.classList.add('active');
-          }
-        });
-      });
-
       // パララックス
       const parallaxTarget = [].slice.call(document.querySelectorAll('.feature_contents'));
-
       window.addEventListener('scroll',() => {
         parallaxTarget.forEach(element => {
           const elementRects = element.getBoundingClientRect();
@@ -163,7 +138,6 @@
           }
         });
       });
-
     }
   }
 
