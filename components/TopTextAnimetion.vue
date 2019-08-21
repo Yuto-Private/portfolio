@@ -29,7 +29,10 @@
     &_inner {
       h1 {
         letter-spacing: 5px;
-        font-size: 10vw;
+        font-size: 14vw;
+        @include mediaQuery(desktopFollow) {
+          font-size: 10vw;
+        }
 
         span {
           position: relative;
@@ -38,9 +41,12 @@
         }
       }
       p {
-        font-size: 2.5vw;
+        font-size: 4.5vw;
         margin-top: 20px;
         opacity: 0;
+        @include mediaQuery(desktopFollow) {
+          font-size: 2.5vw;
+        }
       }
     }
 

@@ -10,11 +10,20 @@
   </nuxt-link>
 </template>
 
+<script>
+  export default {
+    props: ['title','slag','thumb','launch']
+  }
+</script>
+
 <style scoped lang='scss'>
 
   .card {
-    width: 30%;
+    width: 100%;
     cursor: pointer;
+    @include mediaQuery {
+      width: 30%;
+    }
 
     &_thumbnail {
       position: relative;
@@ -67,10 +76,3 @@
   }
 
 </style>
-
-
-<script>
-export default {
-  props: ['title','slag','thumb','launch']
-}
-</script>

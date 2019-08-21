@@ -1,15 +1,10 @@
-const tabletThreshold = 960;
-const mobileThreshold = 768;
+const breakPoint = 960;
 
 const isDeviceType = w => {
-
-  if( w < tabletThreshold && w > mobileThreshold ){
-    return 'tablet';
-  } else if ( w < mobileThreshold ) {
-    return 'mobile';
+  if( w < breakPoint ){
+    return false;
   }
-  return 'desktop';
-
+  return true;
 }
 
 const getWindowSize = () => {
@@ -23,7 +18,7 @@ const getWindowSize = () => {
 
 const defaultState = {
   size: getWindowSize(),
-  type: isDeviceType(window.innerWidth)
+  isPC: isDeviceType(window.innerWidth)
 }
 
 const state = () => ({
@@ -31,13 +26,13 @@ const state = () => ({
 })
 
 const getters = {
-  isDevice: state => state.isDevice 
+  isPC: state => state.isDevice.isPC 
 }
 
 const mutations = {
   update(state) {
     state.isDevice.size = getWindowSize();
-    state.isDevice.type = isDeviceType(state.isDevice.size.w);
+    state.isDevice.isPC = isDeviceType(state.isDevice.size.w);
   }
 }
 

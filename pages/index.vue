@@ -3,17 +3,17 @@
 
     <TopTextAnimetion />
 
-    <Feature :title="'PORTFOLIO'" :titlePositionAdjust="'62%, -200%'">
+    <Feature :title="'PORTFOLIO'" :titlePositionAdjust="'62%, -217%'">
       <CardList :posts="posts" />
     </Feature>
 
-    <Feature :title="'PROFILE'" :reversal='true' :titlePositionAdjust="'62%, 130%'">
+    <Feature :title="'PROFILE'" :reversal='true' :titlePositionAdjust="'62%, 148%'">
       <div class='profile'>
         <Glitch 
           :className="'profile_image'" 
-          :width="'40%'" 
-          :height="'40vw'"
-          :minHeight="'550px'" 
+          :width="['40%','100%']" 
+          :height="['40vw','50vh']"
+          :minHeight="['550px','auto']" 
           :path="'/images/about.jpg'" 
         />
         <div class='profile_detail'>
@@ -21,7 +21,7 @@
             <h4>Yuto Takahashi</h4>
             <dl class="profile_detail_item">
               <dt>SKILL SET</dt>
-              <dd>
+              <dd class="mod-iconList">
                 <img v-for='item in items' :key='items' :src="'/icon/'+item+'.svg'">
               </dd>
             </dl>
@@ -47,28 +47,37 @@
   .profile {
     
     display: flex;
+    flex-direction: column;
+    @include mediaQuery {
+      flex-direction: row;
+    }
 
     &_image {
-      width: 40%;
       position: relative;
     }
 
     &_detail {
-      width: 60%;
       background-color: rgba(255,255,255,1);
       color: #000;
-      margin: 60px 0 -60px;
-      padding: 50px;
+      padding: 25px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      @include mediaQuery {
+        width: 60%;
+        padding: 50px;
+        margin: 60px 0 -60px;
+      }
 
       h4 {
         @include font_family(primary);
-        font-size: 40px;
+        font-size: 30px;
         letter-spacing: 3px;
         border-bottom: 2px dashed #000;
         padding-bottom: 6px;
+        @include mediaQuery {
+          font-size: 40px;
+        }
       }
 
       &_item {
@@ -79,14 +88,20 @@
         }
         dd {
           margin-top: 15px;
-          font-size: 16px;
+          font-size: 12px;
           line-height: 1.65;
           letter-spacing: 2px;
           font-weight: normal;
+          &.mod-iconList {
+            margin-top: 10px;
+          }
+          @include mediaQuery {
+            font-size: 16px;
+          }
           img {
             width: 10%;
             max-width: 40px;
-            margin-right: 15px;
+            margin: 5px 15px 0 0 ;
           }
         }
       }
@@ -97,7 +112,6 @@
 </style>
 
 <script>
-
   import { client } from '~/plugins/contentful.js'
   import TopTextAnimetion from '@/components/TopTextAnimetion'
   import Feature from '@/components/Feature'

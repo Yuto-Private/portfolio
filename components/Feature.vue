@@ -53,33 +53,50 @@ export default {
 
   .feature {
     position: relative;
-    padding: 50px 0;
-    margin-top: 200px;
+    padding: 50px 0 10px;
+    margin-top: 100px;
+    @include mediaQuery {
+      padding: 50px 0;
+      margin-top: 200px;
+    }
 
     &.reversal {
-      padding: 50px 0 110px;
+      padding: 50px 0 10px;
+      @include mediaQuery {
+        padding: 50px 0 110px;
+      }
     }
 
     &_title {
       @include font_family(primary);
       position: absolute;
-      font-size: 40px;
+      font-size: 20px;
       letter-spacing: 10px;
       top: 0;
-      right: 0;
+      right: -20px;
       z-index: 10;
+      @include mediaQuery(desktopFollow) {
+        font-size: 40px;
+        right: 0;
+      }
       .reversal & {
         right: auto;
-        left: 0;
+        left: -15px;
+        @include mediaQuery(desktopFollow) {
+          left: 0;
+        }
       }
     }
 
     &_contents {
       position: relative;
-      width: 90%;
+      width: 88%;
       z-index: 2;
       .reversal & {
         margin-left: auto;
+      }
+      @include mediaQuery {
+        width: 90%;
       }
     }
 

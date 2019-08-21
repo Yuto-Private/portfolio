@@ -2,36 +2,49 @@
   <section class="footer">
     <div class='footer_inner'>
       <ul class='footer_snsLink'>
-        <li>
-          <a href='https://github.com/Yuto-Private?tab=repositories' target="_blank">
-            <img src="/icon/wantedly.svg">
-          </a>
-        </li>
-        <li>
-          <a href='https://github.com/Yuto-Private?tab=repositories' target="_blank">
-            <img src="/icon/github.svg">
-          </a>
-        </li>
-        <li>
-          <a href='https://github.com/Yuto-Private?tab=repositories' target="_blank">
-            <img src="/icon/facebook.svg">
-          </a>
-        </li>
-        <li>
-          <a href='https://github.com/Yuto-Private?tab=repositories' target="_blank">
-            <img src="/icon/twitter.svg">
-          </a>
-        </li>
-        <li>
-          <a href='https://github.com/Yuto-Private?tab=repositories' target="_blank">
-            <img src="/icon/netlify.svg">
+        <li v-for='item in items' :key='items' >
+          <a :href='item.url' target="_blank">
+            <img :src="'/icon/'+item.name+'.svg'">
           </a>
         </li>
       </ul>
-      <p>Copyright © 2019 Yuto Takahashi All Right Reserved.</p>
+      <p>Copyright © 2019 Yuto Takahashi<br>All Right Reserved.</p>
     </div>
   </section>
 </template>
+
+<script>
+
+  export default {
+    data(){
+      return {
+        items: [
+          {
+            name: 'wantedly',
+            url: 'https://github.com/Yuto-Private?tab=repositories'
+          },
+          {
+            name: 'github',
+            url: 'https://github.com/Yuto-Private?tab=repositories'
+          },
+          {
+            name: 'facebook',
+            url: 'https://github.com/Yuto-Private?tab=repositories'
+          },
+          {
+            name: 'twitter',
+            url: 'https://github.com/Yuto-Private?tab=repositories'
+          },
+          {
+            name: 'netlify',
+            url: 'https://github.com/Yuto-Private?tab=repositories'
+          }
+        ]
+      }
+    }
+  }
+
+</script>
 
 <style lang="scss">
 
@@ -54,8 +67,14 @@
     }
 
     p {
+      font-size: 12px;
+      line-height: 1.7;
       margin-top: 40px;
       letter-spacing: 2px;
+      text-align: center;
+      @include mediaQuery {
+        font-size: 16px;
+      }
     }
   }
 

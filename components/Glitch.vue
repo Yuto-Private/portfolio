@@ -1,29 +1,19 @@
 <template>
-  <div :class='className' class="glitch" :style='baseStyle'>
-    <div v-for='n of 5' :key='n' class='glitch_img' :style='background' />
+  <div :class='className' class="glitch" :style='{
+    width: $store.state.responsive.isDevice.isPC ? width[0] : width[1],
+    height: height,
+    minHeight: $store.state.responsive.isDevice.isPC ? minHeight[0] : minHeight[1]
+  }'>
+    <div v-for='n of 5' :key='n' class='glitch_img' :style='{ backgroundImage: "url(" + path + ")" }' />
   </div>
 </template>
 
 <script>
 
-export default {
-
-  props: ['className', 'width', 'height', 'minHeight', 'path'],
-  
-  data() {
-    return {
-      baseStyle: {
-        width: this.width,
-        height: this.height,
-        minHeight: this.minHeight,
-      },
-      background: {
-        backgroundImage: 'url(' + this.path + ')'
-      }
-    }
+  export default {
+    props: ['className', 'width', 'height', 'minHeight', 'path', 'isPC']
   }
 
-}
 </script>
 
 <style lang='scss'>
@@ -36,7 +26,7 @@ export default {
       left: calc(-1 * 10px);
       width: calc(100% + 10px * 2);
       height: calc(100% + 5px * 2);
-      background-position: 50% 0;
+      background-position: 50% 50%;
       background-repeat: no-repeat;
       background-size: cover;
       transform: translate3d(0,0,0);
