@@ -2,14 +2,16 @@
 
   <article class="pageDetail">
     <section class="hero">
+      <Glitch 
+        :height='["520px","520px"]'
+        :path="posts.fields.keyVisual.fields.file.url"
+      />
       <div class='hero_heading'>
         <h1>{{posts.fields.title}}</h1>
         <div class='hero_heading_innerBox'>
-          <h2>{{posts.fields.subtitle}}</h2>
-          <a :href="posts.fields.url" target="_blank">WEB SITE</a>
+          <p><a :href="posts.fields.url" target="_blank">{{posts.fields.url}}</a></p>
         </div>
       </div>
-      <img class='hero_keyVisual' :src="posts.fields.keyVisual.fields.file.url" alt='' />
     </section>
     <section class="data">
       <div class="data_inner">
@@ -27,11 +29,12 @@
             <img v-for='item in posts.fields.technology' :src="'/icon/'+item+'.svg'">
           </dd>
         </dl>
-        <dl>
-          <dt>COMMENT</dt>
-          <dd v-html="toHtmlString(posts.fields.detail)" ></dd>
-        </dl>
       </div>
+    </section>
+
+    <section class="comment">
+      <h2>COMMENT</h2>
+      <div v-html="toHtmlString(posts.fields.detail)" class="comment_detail"></div>
     </section>
 
   </article>
@@ -44,10 +47,19 @@
  .pageDetail {
    max-width: 960px;
    margin: 60px auto;
+   position: relative;
+   z-index: 1;
 
   .hero {
+    position: relative;
     &_heading {
+      position: absolute;
+      bottom: -60px;
+      right: 0;
+      left: 0;
+      text-shadow: 1px 1px 1px #000;
       h1 {
+        @include font_family(primary);
         font-size: 45px;
         text-align: center;
         letter-spacing: 7px;
@@ -58,34 +70,24 @@
         font-size: 18px;
         margin-top: 20px;
         h2 {
+          letter-spacing: 2px;
           padding-right: 20px;
         }
       }
     }
-    &_keyVisual {
-      margin-top: 60px;
-    }
   }
 
   .data {
-    background-color: #f9f9f9;
     margin-top: 60px;
-    display: flex;
-    justify-content: center;
     &_inner {
       padding: 60px 20px;
+      display: flex;
+      justify-content: space-around;
+
       dl {
         display: flex;
-        margin-top: 30px;
-        &:first-child {
-          margin-top: 0;
-        }
-        dt {
-          width: 125px;
-        }
         dd {
           padding-left: 20px;
-          border-left: 1px solid #000;
           img {
             width: 25px;
             margin-right: 10px;
@@ -110,6 +112,21 @@
       }
     }
   }
+
+  .comment {
+    text-align: center;
+    line-height: 1.75;
+    margin-top: 200px;
+    h2 {
+      @include font_family(primary);
+      font-size: 30px;
+      letter-spacing: 7px;
+    }
+    &_detail {
+      margin-top: 30px;
+    }
+  }
+
  }
  
 </style>
@@ -120,9 +137,14 @@
   import { client } from '~/plugins/contentful.js'
   import { BLOCKS } from '@contentful/rich-text-types';
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+  import Glitch from '@/components/Glitch'
 
   export default {
-    
+
+    components: {
+      Glitch
+    },
+
     asyncData(context) {
       return client.getEntries({
         content_type: 'detail',
