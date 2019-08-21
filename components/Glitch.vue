@@ -1,7 +1,7 @@
 <template>
   <div :class='className' class="glitch" :style='{
     width: $store.state.responsive.isDevice.isPC ? width[0] : width[1],
-    height: height,
+    height: $store.state.responsive.isDevice.isPC ? height[0] : height[1],
     minHeight: $store.state.responsive.isDevice.isPC ? minHeight[0] : minHeight[1]
   }'>
     <div v-for='n of 5' :key='n' class='glitch_img' :style='{ backgroundImage: "url(" + path + ")" }' />
@@ -11,7 +11,33 @@
 <script>
 
   export default {
-    props: ['className', 'width', 'height', 'minHeight', 'path', 'isPC']
+    props: {
+      className: {
+        type: String
+      },
+      width: {
+        type: Array,
+        default: () => {
+          return ['100%','100%']
+        }
+      }, 
+      height: {
+        type: Array,
+        default: () => {
+          return ['100%','100%']
+        }
+      },
+      minHeight: {
+        type: Array,
+        default: () => {
+          return ['auto','auto']
+        }
+      },
+      path: {
+        type: String,
+        required: true
+      },
+    }
   }
 
 </script>
