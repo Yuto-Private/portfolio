@@ -1,18 +1,21 @@
 <template>
   <nuxt-link tag='li' :to="'/detail/'+slag+'/'" class="card">
     <div class='card_thumbnail'>
+      <Label :status='status' />
       <img :src='thumb' alt=''>
     </div>
     <div class='card_text'>
       <p>{{ title }}</p>
-      <p>{{launch}}</p>
     </div>
   </nuxt-link>
 </template>
 
 <script>
+  import Label from '@/components/Label'
+
   export default {
-    props: ['title','slag','thumb','launch']
+    components: { Label },
+    props: ['title','slag','thumb','launch','status']
   }
 </script>
 
@@ -47,17 +50,13 @@
     }
 
     &_text {
-      margin-top: 25px;
+      @include font_family(primary);
+      margin-top: 20px;
       transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
       p {
-        &:first-child {
-          font-size: 20px;
-          letter-spacing: 1.5px;
-        }
-        &:last-child {
-          font-size: 12px;
-          margin-top: 10px;
-        }
+        font-size: 20px;
+        margin-top: 10px;
+        letter-spacing: 1.5px;
       }
     }
 
@@ -67,9 +66,6 @@
         &:after {
           transform: translateX(20px) translateY(20px);
         }
-      }
-      .card_text {
-        color: $mainColor;
       }
     }
 

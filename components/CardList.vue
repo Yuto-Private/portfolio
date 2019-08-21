@@ -6,7 +6,7 @@
       :title="post.fields.title"
       :slag="post.fields.slag"
       :thumb="post.fields.keyVisual.fields.file.url"
-      :launch="post.fields.launch"
+      :status="post.fields.status"
     />
   </ul>
 </template>
