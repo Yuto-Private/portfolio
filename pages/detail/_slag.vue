@@ -9,7 +9,7 @@
       <div class='hero_heading'>
         <h1>{{posts.fields.title}}</h1>
         <div class='hero_heading_innerBox'>
-          <p><a :href="posts.fields.url" target="_blank">{{posts.fields.url}}</a></p>
+          <p><a :href="posts.fields.url" target="_blank" class="textLink">{{posts.fields.url}}</a></p>
         </div>
       </div>
     </section>
