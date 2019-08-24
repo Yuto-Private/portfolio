@@ -51,7 +51,8 @@
   .footer {
     position: relative;
     z-index: 2;
-    height: 70vh;
+    padding: 70px 0;
+    margin-top: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
