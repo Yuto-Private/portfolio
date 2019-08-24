@@ -2,7 +2,7 @@
 
   <section class="feature rise" :class="{reversal:reversal}">
     <h3 class='feature_title' :style="titlePosition"><span>{{title}}</span></h3>
-    <div class='feature_contents'>
+    <div class='feature_contents js-parallax'>
       <slot />
     </div>
     <div class='feature_texture' />
@@ -25,9 +25,9 @@ export default {
   },
 
   mounted() {
+    
     // 要素を柔らかく表示
     const riseTarget = [].slice.call(document.querySelectorAll('.feature'));
-
     window.addEventListener('scroll',() => {
       riseTarget.forEach(element => {
         const elementRects = element.getBoundingClientRect();
@@ -36,6 +36,19 @@ export default {
         }
       });
     });
+
+    // パララックス
+    const parallaxTarget = [].slice.call(document.querySelectorAll('.js-parallax'));
+    window.addEventListener('scroll',() => {
+      parallaxTarget.forEach(element => {
+        const elementRects = element.getBoundingClientRect();
+        const threshold = this.$store.state.responsive.isDevice.isPC ? .02 : .005;
+        if( elementRects.top <= this.$store.state.responsive.isDevice.size.h ){
+          element.setAttribute('style','transform: translateY(' + elementRects.top * threshold + '%' + ')');
+        }
+      });
+    });
+
   }
 
 }

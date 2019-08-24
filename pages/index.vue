@@ -139,20 +139,6 @@
       .catch( error => {
         console.log("Error getting document:", error);
       });
-    },
-
-    mounted() {
-
-      // パララックス
-      const parallaxTarget = [].slice.call(document.querySelectorAll('.feature_contents'));
-      window.addEventListener('scroll',() => {
-        parallaxTarget.forEach(element => {
-          const elementRects = element.getBoundingClientRect();
-          if( elementRects.top <= this.$store.state.responsive.isDevice.size.h ){
-            element.setAttribute('style','transform: translateY(' + elementRects.top * .02 + '%' + ')');
-          }
-        });
-      });
     }
   }
 
