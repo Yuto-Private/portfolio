@@ -22,7 +22,7 @@
             <dl class="profile_detail_item">
               <dt>SKILL SET</dt>
               <dd class="mod-iconList">
-                <img v-for='item in items' :key='item' :src="'/icon/'+item+'.svg'">
+                <img v-for='item in items' :key='item' :src="`/icon/${item}.svg`">
               </dd>
             </dl>
             <dl class="profile_detail_item">

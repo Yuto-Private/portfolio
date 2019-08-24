@@ -4,7 +4,7 @@
       <ul class='footer_snsLink'>
         <li v-for='item in items' :key='item.name' >
           <a :href='item.url' target="_blank">
-            <img :src="'/icon/'+item.name+'.svg'">
+            <img :src="`/icon/${item.name}.svg`">
           </a>
         </li>
       </ul>
