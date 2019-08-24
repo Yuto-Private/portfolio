@@ -2,7 +2,7 @@
   <ul class="cardList">
     <Card
       v-for="post in posts"
-      :key="posts"
+      :key="post.sys.id"
       :title="post.fields.title"
       :slag="post.fields.slag"
       :thumb="post.fields.keyVisual.fields.file.url"

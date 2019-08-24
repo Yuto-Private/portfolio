@@ -22,7 +22,7 @@
             <dl class="profile_detail_item">
               <dt>SKILL SET</dt>
               <dd class="mod-iconList">
-                <img v-for='item in items' :key='items' :src="'/icon/'+item+'.svg'">
+                <img v-for='item in items' :key='item' :src="'/icon/'+item+'.svg'">
               </dd>
             </dl>
             <dl class="profile_detail_item">
@@ -133,8 +133,8 @@
         content_type: 'detail',
         order: '-sys.createdAt',
       })
-      .then( document => {
-        return { posts:document.items }
+      .then( ({ items }) => {
+        return { posts: items }
       })
       .catch( error => {
         console.log("Error getting document:", error);
@@ -142,6 +142,7 @@
     },
 
     mounted() {
+
       // パララックス
       const parallaxTarget = [].slice.call(document.querySelectorAll('.feature_contents'));
       window.addEventListener('scroll',() => {

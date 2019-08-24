@@ -2,7 +2,7 @@
   <section class="footer">
     <div class='footer_inner'>
       <ul class='footer_snsLink'>
-        <li v-for='item in items' :key='items' >
+        <li v-for='item in items' :key='item.name' >
           <a :href='item.url' target="_blank">
             <img :src="'/icon/'+item.name+'.svg'">
           </a>

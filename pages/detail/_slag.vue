@@ -26,7 +26,7 @@
         <dl>
           <dt>TECHNOLOGY</dt>
           <dd>
-            <img v-for='item in posts.fields.technology' :src="'/icon/'+item+'.svg'">
+            <img v-for='item in posts.fields.technology' :key='item' :src="'/icon/'+item+'.svg'">
           </dd>
         </dl>
       </div>
@@ -150,8 +150,8 @@
         content_type: 'detail',
         'fields.slag': context.params.slag
       })
-      .then( document => {
-        return { posts:document.items[0] }
+      .then( ({ items }) => {
+        return { posts:items[0] }
       })
       .catch(function(error) {
         console.log("Error getting document:", error);
