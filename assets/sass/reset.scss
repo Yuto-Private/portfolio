@@ -68,28 +68,3 @@ img {
   width: 100%;
   vertical-align: middle;
 }
-
-.textLink {
-  position: relative;
-  padding: 0.1em 0.3em;
-  display: inline-block;
-  transition: .3s;
-  color: #3DB680;
-  text-decoration: none;
-  &:after {
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    content: '';
-    width: 0;
-    height: 2px;
-    background-color: #3DB680;
-    transition: .3s;
-    transform: translateX(-50%);
-  }
-  &:hover {
-    &:after {
-      width: 100%;
-    }
-  }
-}

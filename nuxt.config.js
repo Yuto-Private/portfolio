@@ -49,7 +49,8 @@ module.exports = {
       '~/assets/sass/font.scss',
       '~/assets/sass/animetion.scss',
       '~/assets/sass/variable.scss',
-      '~/assets/sass/mixin.scss'
+      '~/assets/sass/mixin.scss',
+      '~/assets/sass/common.scss'
     ]
   },
 
