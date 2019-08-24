@@ -2,8 +2,8 @@
   <div class="archiveDetail">
     <section class='hero'>
       <div class='hero_inner'>
-        <h1>Yuto Takahashi</h1>
-        <p>Web Engineer</p>
+        <h1>PORTFOLIO</h1>
+        <p>制作実績一覧</p>
       </div>
     </section>
     <section class="works">
@@ -16,6 +16,8 @@
 
 .archiveDetail {
 
+  padding: 0 20px;
+
   .hero {
     display: flex;
     align-items: center;
@@ -25,7 +27,8 @@
       text-align: center;
       letter-spacing: 6px;
       h1 {
-        font-size: 45px;
+        @include font_family(primary);
+        font-size: 50px;
         letter-spacing: 6px;
       }
       p {
@@ -37,8 +40,23 @@
   }
 
   .works {
-    width: 960px;
+
+    max-width: 960px;
     margin: 0 auto;
+
+    @include mediaQuery(tablet) {
+      .cardList {
+        flex-direction: row;
+        li {
+          width: 48%;
+          margin-top: 0;
+          &:nth-child(n + 3) {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+
   }
 
 }
