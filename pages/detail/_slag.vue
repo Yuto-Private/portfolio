@@ -9,10 +9,16 @@
       <div class='hero_heading'>
         <h1>{{posts.fields.title}}</h1>
         <div class='hero_heading_innerBox'>
-          <p><a :href="posts.fields.url" target="_blank" class="textLink">{{posts.fields.url}}</a></p>
+          <a :href="posts.fields.url" target="_blank" class="textLink mod-icon">
+            <img src="/icon/Link1.svg"><span>WEB SITE</span>
+          </a>
+          <a :href="posts.fields.repositories" target="_blank" class="textLink mod-icon" :class="{disabled:!posts.fields.repositories}">
+            <img src="/icon/github.svg"><span>Repositories</span>
+          </a>
         </div>
       </div>
     </section>
+
     <section class="data">
       <div class="data_inner">
         <dl>
@@ -37,18 +43,24 @@
       <div v-html="toHtmlString(posts.fields.detail)" class="comment_detail"></div>
     </section>
 
+    <ButtonCTA :url='posts.fields.url' :caption='"このサイトを見る"' :styleType='"scale"' :target='"_blank"'/>
+
   </article>
 
 </template>
 
-
 <style lang="scss">
 
  .pageDetail {
+
    max-width: 960px;
    margin: 60px auto;
    position: relative;
    z-index: 1;
+
+   .buttonWrap {
+     margin-top: 50px;
+   }
 
   .hero {
     position: relative;
@@ -69,23 +81,33 @@
         justify-content: center;
         font-size: 18px;
         margin-top: 20px;
-        h2 {
-          letter-spacing: 2px;
-          padding-right: 20px;
+        a {
+          &:first-child {
+            margin-right: 10px;
+          }
         }
       }
     }
   }
 
   .data {
-    margin-top: 60px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(54, 55, 55, .5);
+
     &_inner {
-      padding: 60px 20px;
-      display: flex;
-      justify-content: space-around;
+      padding: 30px 0;
 
       dl {
         display: flex;
+        margin-top: 20px;
+        &:first-child {
+          margin-top: 0;
+        }
+        dt {
+          width: 112px;
+        }
         dd {
           padding-left: 20px;
           img {
@@ -138,11 +160,12 @@
   import { BLOCKS } from '@contentful/rich-text-types';
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
   import Glitch from '@/components/Glitch'
+  import ButtonCTA from '@/components/ButtonCTA'
 
   export default {
 
     components: {
-      Glitch
+      Glitch,ButtonCTA
     },
 
     asyncData(context) {

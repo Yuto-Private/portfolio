@@ -12,15 +12,18 @@
       <h1 class="textGlitch" data-text="ERROR">ERROR</h1>
       <h2>エラーが起きました</h2>
     </div>
-    <nuxt-link to="/" tag='div' class='button mod-scale'>
-      <span>BACK TO TOP</span>
-    </nuxt-link>
+    <ButtonCTA :url='"/"' :caption='"BACK TO TOP"' :styleType='"scale"' :forceLink='true' />
   </div>
 </template>
 
 <script>
+import ButtonCTA from '@/components/ButtonCTA'
+
 export default {
   name: 'NuxtError',
+  components: {
+    ButtonCTA
+  },
   props: {
     error: {
       type: Object,
@@ -76,9 +79,8 @@ export default {
     }
   }
 
-  .button {
-    width: 200px;
-    margin: 30px auto 0;
+  .buttonWrap {
+    margin-top: 30px;
   }
 
   .textGlitch {
