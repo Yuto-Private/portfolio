@@ -92,11 +92,12 @@
           line-height: 1.65;
           letter-spacing: 2px;
           font-weight: normal;
+          text-align: justify;
           &.mod-iconList {
             margin-top: 10px;
           }
           @include mediaQuery {
-            font-size: 16px;
+            font-size: 14px;
           }
           img {
             width: 10%;
