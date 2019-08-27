@@ -10,7 +10,7 @@
         <h1>{{posts.fields.title}}</h1>
         <div class='hero_heading_innerBox'>
           <a :href="posts.fields.url" target="_blank" class="textLink mod-icon">
-            <img src="/icon/Link1.svg"><span>WEB SITE</span>
+            <img src="/icon/Link1.svg"><span>This Page Link</span>
           </a>
           <a :href="posts.fields.repositories" target="_blank" class="textLink mod-icon" :class="{disabled:!posts.fields.repositories}">
             <img src="/icon/github.svg"><span>Repositories</span>
@@ -38,9 +38,17 @@
       </div>
     </section>
 
+    <section class="look">
+      <img v-for='item in posts.fields.images' :key='item.sys.id' :src="item.fields.file.url">
+    </section>
+
     <section class="comment">
-      <h2>COMMENT</h2>
-      <div v-html="toHtmlString(posts.fields.detail)" class="comment_detail"></div>
+      <div class='comment_title'>
+        <h2 data-text="COMMENT" class="textGlitch">COMMENT</h2>
+      </div>
+      <div class="comment_detail">
+        <div v-html="toHtmlString(posts.fields.detail)" class='comment_detail_inner' />
+      </div>
     </section>
 
     <ButtonCTA :url='posts.fields.url' :caption='"このサイトを見る"' :styleType='"scale"' :target='"_blank"'/>
@@ -59,20 +67,21 @@
    z-index: 1;
 
    .buttonWrap {
-     margin-top: 50px;
+     margin-top: 70px;
    }
 
   .hero {
     position: relative;
     &_heading {
       position: absolute;
-      bottom: -60px;
+      bottom: -80px;
       right: 0;
       left: 0;
       text-shadow: 1px 1px 1px #000;
       h1 {
         @include font_family(primary);
-        font-size: 45px;
+        font-size: 80px;
+        line-height: 1.2;
         text-align: center;
         letter-spacing: 7px;
       }
@@ -91,7 +100,7 @@
   }
 
   .data {
-    margin-top: 100px;
+    margin-top: 120px;
     display: flex;
     justify-content: center;
     background-color: rgba(54, 55, 55, .5);
@@ -135,18 +144,65 @@
     }
   }
 
+  .look {
+    margin-top: 150px;
+    img {
+      margin-top: 70px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
   .comment {
     text-align: center;
     line-height: 1.75;
-    margin-top: 200px;
-    h2 {
-      @include font_family(primary);
-      font-size: 30px;
-      letter-spacing: 7px;
+    margin-top: 150px;
+    display: flex;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      background-color: $mainColor;
+      opacity: .5;
+      width: 40%;
+      height: 100px;
+      z-index: -1;
     }
+
+    &_title {
+      width: 50%;
+      height: 30vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 2px solid;
+      background-color: #000;
+      h2 {
+        @include font_family(primary);
+        font-size: 80px;
+        letter-spacing: 7px;
+      }
+    }
+
     &_detail {
-      margin-top: 30px;
+      width: calc(50% + 2px);
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      height: 30vw;
+      justify-content: center;
+      margin: 40px 0 0 -2px;
+      background-color: #fff;
+      color: #000;
+      text-align: justify;
     }
+
   }
 
  }
@@ -180,6 +236,7 @@
         console.log("Error getting document:", error);
       });
     },
+
     methods: {
      toHtmlString(obj) {
        const options = {
@@ -190,7 +247,7 @@
        }
        return documentToHtmlString(obj, options);
      }
-   }
+   },
 
   }
 
