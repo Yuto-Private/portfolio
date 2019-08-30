@@ -1,19 +1,13 @@
 const breakPoint = 960;
 
 const isDeviceType = w => {
-  if( w < breakPoint ){
-    return false;
-  }
-  return true;
+  return w < breakPoint ? false : true;
 }
 
 const getWindowSize = () => {
   let w = window.innerWidth
   let h = window.innerHeight
-  return {
-    w: w,
-    h: h
-  }
+  return { w: w, h: h }
 }
 
 const defaultState = {
