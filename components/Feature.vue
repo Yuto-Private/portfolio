@@ -1,6 +1,6 @@
 <template>
 
-  <section class="feature rise" :class="{reversal:reversal}">
+  <section class="feature inView" :class="{reversal:reversal}">
     <h3 class='feature_title' :style="titlePosition"><span>{{title}}</span></h3>
     <div class='feature_contents js-parallax'>
       <slot />
@@ -12,8 +12,9 @@
 
 <script>
 
-export default {
+import { inView, parallax } from '~/plugins/common.js'
 
+export default {
   props: ['title','reversal','titlePositionAdjust'],
 
   data() {
@@ -23,46 +24,15 @@ export default {
       }
     }
   },
-
   mounted() {
-    
-    // 要素を柔らかく表示
-    const riseTarget = [].slice.call(document.querySelectorAll('.feature'));
-    window.addEventListener('scroll',() => {
-      riseTarget.forEach(element => {
-        const elementRects = element.getBoundingClientRect();
-        if( elementRects.top <= this.$store.state.responsive.isDevice.size.h / 1.5 ){
-          element.classList.add('active');
-        }
-      });
-    });
-
-    // パララックス
-    const parallaxTarget = [].slice.call(document.querySelectorAll('.js-parallax'));
-    window.addEventListener('scroll',() => {
-      parallaxTarget.forEach(element => {
-        const elementRects = element.getBoundingClientRect();
-        const threshold = this.$store.state.responsive.isDevice.isPC ? .02 : .005;
-        if( elementRects.top <= this.$store.state.responsive.isDevice.size.h ){
-          element.setAttribute('style','transform: translateY(' + elementRects.top * threshold + '%' + ')');
-        }
-      });
-    });
-
+    inView({store:this.$store});
+    parallax(this.$store, '.js-parallax');
   }
-
 }
+
 </script>
 
 <style lang='scss'>
-
-  .rise {
-    opacity: 0;
-    transition: opacity .5s cubic-bezier(.17,.67,.65,.54);
-    &.active {
-      opacity: 1;
-    }
-  }
 
   .feature {
     position: relative;
@@ -88,9 +58,17 @@ export default {
       top: 0;
       right: -20px;
       z-index: 10;
+      transition: opacity .5s cubic-bezier(1, 0, .08, 1);
+      transition-delay: .5s;
       @include mediaQuery(desktopFollow) {
         font-size: 40px;
         right: 0;
+      }
+      .inView & {
+        opacity: 0;
+      }
+      .inView-flag & {
+        opacity: 1;
       }
       .reversal & {
         right: auto;
@@ -121,10 +99,19 @@ export default {
       top: 0;
       background-color: $mainColor;
       opacity: .5;
+      transition: transform .5s cubic-bezier(1, 0, .08, 1);
+      transform-origin: 100% 0;
       .reversal & {
         right: auto;
         left: 0;
         background-color: $subColor;
+        transform-origin: 0 100%;
+      }
+      .inView & {
+        transform: scaleX(0);
+      }
+      .inView-flag & {
+        transform: scaleX(1);
       }
     }
   }

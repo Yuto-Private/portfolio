@@ -24,6 +24,14 @@
   .card {
     width: 100%;
     cursor: pointer;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    opacity: 0;
+    bottom: -20px;
+    .cardView-flag & {
+      opacity: 1;
+      bottom: 0;
+    }
     @include mediaQuery {
       width: 30%;
     }

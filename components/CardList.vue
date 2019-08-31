@@ -1,22 +1,27 @@
 <template>
-  <ul class="cardList">
+  <ul class="cardList cardView">
     <Card
-      v-for="post in posts"
+      v-for="(post, index) in posts"
       :key="post.sys.id"
       :title="post.fields.title"
       :slag="post.fields.slag"
       :thumb="post.fields.keyVisual.fields.file.url"
       :status="post.fields.status"
+      :style="`transition-delay:${index / 5}s`"
     />
   </ul>
 </template>
 
 <script>
+  import { inView } from '~/plugins/common.js'
   import Card from '@/components/Card'
 
   export default {
     components: { Card },
-    props: ['posts']
+    props: ['posts','animetionDelayTime'],
+    mounted() {
+      inView({store:this.$store, className:'cardView', delayTime: this.animetionDelayTime});
+    }
   }
 </script>
 

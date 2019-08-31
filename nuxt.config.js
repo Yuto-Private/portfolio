@@ -29,7 +29,8 @@ module.exports = {
   */
   plugins: [
     '~/plugins/contentful',
-    '~/plugins/particles'
+    '~/plugins/particles',
+    '~/plugins/common'
   ],
 
   router: {

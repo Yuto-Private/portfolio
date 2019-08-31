@@ -4,17 +4,18 @@
     <TopTextAnimetion />
 
     <Feature :title="'PORTFOLIO'" :titlePositionAdjust="'62%, -217%'">
-      <CardList :posts="posts" />
+      <CardList :posts="posts" :animetionDelayTime='500' />
     </Feature>
 
     <Feature :title="'PROFILE'" :reversal='true' :titlePositionAdjust="'62%, 148%'">
-      <div class='profile'>
+      <div class='profile profileView'>
         <Glitch 
           :className="'profile_image'" 
           :width="['40%','100%']" 
           :height="['40vw','50vh']"
           :minHeight="['550px','auto']" 
           :path="'/images/about.jpg'" 
+          :animetionDelayTime='500'
         />
         <div class='profile_detail'>
           <div class='profile_detail_inner'>
@@ -63,6 +64,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      opacity: 0;
+      transition: opacity .3s cubic-bezier(1, 0, .08, 1);
+      .profileView-flag & {
+        opacity: 1;
+      }
       @include mediaQuery {
         width: 60%;
         padding: 50px;
@@ -114,6 +120,7 @@
 
 <script>
   import { client } from '~/plugins/contentful.js'
+  import { inView } from '~/plugins/common.js'
   import TopTextAnimetion from '@/components/TopTextAnimetion'
   import Feature from '@/components/Feature'
   import CardList from '@/components/CardList'
@@ -140,6 +147,10 @@
       .catch( error => {
         console.log("Error getting document:", error);
       });
+    },
+
+    mounted() {
+      inView({store:this.$store, className:'profileView', delayTime:1200});
     }
   }
 
