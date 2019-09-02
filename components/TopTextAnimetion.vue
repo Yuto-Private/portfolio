@@ -2,11 +2,11 @@
   <section class='TopTextAnimetion'>
 
     <div class='TopTextAnimetion_inner'>
-      <h1 ref='targetText'>STAY HUNGRY</h1>
-      <p ref='subText'>常に挑戦しつづける。</p>
+      <h1 id='mainViewAnimetion' ref='targetText'>STAY HUNGRY</h1>
+      <p class='mainViewSubAnimetion' >常に挑戦しつづける。</p>
     </div>
 
-    <div ref='scrollDown' class='scrollDown'><span></span></div>
+    <div class='scrollDown mainViewSubAnimetion'><span></span></div>
 
   </section>
 </template>
@@ -84,27 +84,17 @@
 
 <script>
 
-  import { TweenMax } from 'gsap'
+  import { mainViewAnimetion } from '~/plugins/common.js'
 
   export default {
     mounted() {
-      // 要素と要素内の文字列取得
-      let targetTextBox = this.$refs.targetText;
-      const targetText = targetTextBox.textContent;
-
-      // 一度targetTextBoxの中を空にする
-      targetTextBox.innerHTML = null;
-
-      // 文字数分だけspanで囲う
-      targetText.split('').forEach( string => {
-        string == "/" ? targetTextBox.innerHTML += '<br>' : targetTextBox.innerHTML += '<span>'+string+'</span>';
+      mainViewAnimetion({
+        idName: 'mainViewAnimetion',
+        callback: () => {
+          const subTarget = [].slice.call(document.querySelectorAll('.mainViewSubAnimetion'));
+          TweenMax.to( subTarget[0], .3, { opacity: 1, onComplete:() => {subTarget[1].classList.add('active')} }, .1);
+        }
       });
-
-      // アニメーション
-      TweenMax.staggerTo( targetTextBox.children, .5, { opacity: 1, bottom: 0 }, .1, () => {
-        TweenMax.to( this.$refs.subText, .3, { opacity: 1, onComplete:() => {this.$refs.scrollDown.classList.add('active')} }, .1);
-      });
-
     }
   }
 

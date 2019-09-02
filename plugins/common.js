@@ -1,3 +1,5 @@
+import { TweenMax } from 'gsap'
+
 // addEventListener 複数登録用ロジック
 export function addEventListenerMultiType (element, types, listener, useCapture) {
   for (var i = 0, types = types.trim().split(/\s+/), len = types.length; i < len; ++i) {
@@ -5,14 +7,39 @@ export function addEventListenerMultiType (element, types, listener, useCapture)
   }
 }
 
+// カスタムイベントを作成する
+export function hookEvent ( event ) {
+  const name = event || 'mounted';
+  const myEvent = document.createEvent('HTMLEvents');
+  myEvent.initEvent(name, false, false);
+  window.dispatchEvent(myEvent);
+}
+
+// TOP HEROなどのメインどころで使用するテキストアニメーションロジック
+export function mainViewAnimetion({idName, delayTime, callback}) {
+  const delay = delayTime || 0 ;
+  let targetTextBox = document.getElementById( idName );
+  const targetText = targetTextBox.textContent;
+  targetTextBox.innerHTML = null;
+
+  targetText.split('').forEach( string => {
+    string == "/" ? targetTextBox.innerHTML += '<br>' : targetTextBox.innerHTML += '<span>'+string+'</span>';
+  });
+
+  window.setTimeout(() => {
+    TweenMax.staggerTo( targetTextBox.children, .5, { opacity: 1, bottom: 0 }, .1, () => {
+      callback ? callback() : null ;
+    }); 
+  }, delay);
+}
+
 // inview 要素が領域内に入った時のアニメーション用ロジック
 export function inView ({ store, className, delayTime }) {
-
   const triggerName = className || 'inView' ;
   const delay = delayTime || 0 ;
   const inViewTarget = [].slice.call(document.querySelectorAll( `.${triggerName}` ));
 
-  addEventListenerMultiType(window, 'load scroll', () => { 
+  addEventListenerMultiType(window, 'mounted scroll', () => { 
     inViewTarget.forEach(element => {
       const elementRects = element.getBoundingClientRect();
       if( elementRects.top <= store.state.responsive.isDevice.size.h / 1.5 ){
@@ -23,14 +50,14 @@ export function inView ({ store, className, delayTime }) {
     });
   });
 
+  hookEvent(); //mountedをイベントとして登録
 }
 
 // パララックス
 export function parallax ( store, className ) {
-
   const parallaxTarget = [].slice.call(document.querySelectorAll( className ));
 
-  window.addEventListener('scroll',() => {
+  addEventListenerMultiType(window, 'mounted scroll', () => { 
     parallaxTarget.forEach(element => {
       const elementRects = element.getBoundingClientRect();
       const threshold = store.state.responsive.isDevice.isPC ? .02 : .005;
@@ -40,4 +67,5 @@ export function parallax ( store, className ) {
     });
   });
 
+  hookEvent(); //mountedをイベントとして登録
 }
