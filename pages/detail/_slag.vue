@@ -1,6 +1,7 @@
 <template>
 
   <article class="pageDetail">
+    
     <section class="hero">
       <Glitch 
         :height='["520px","210px"]'
@@ -9,11 +10,11 @@
       <div class='hero_heading js-parallax'>
         <h1 id='mainViewAnimetion'>{{posts.fields.title}}</h1>
         <div class='hero_heading_innerBox mainViewSubAnimetion'>
-          <a :href="posts.fields.url" target="_blank" class="textLink mod-icon">
-            <img src="/icon/Link1.svg"><span>This Page Link</span>
+          <a :href="posts.fields.url" target="_blank" class="textLink mod-icon" :class="{disabled:!posts.fields.url}">
+            <BlankTarget /><span>This Page Link</span>
           </a>
           <a :href="posts.fields.repositories" target="_blank" class="textLink mod-icon" :class="{disabled:!posts.fields.repositories}">
-            <img src="/icon/github.svg"><span>Repositories</span>
+            <Github /><span>Repositories</span>
           </a>
         </div>
       </div>
@@ -244,7 +245,7 @@
         background-color: $mainColor;
         opacity: .5;
         width: 50%;
-        height: 100px;
+        height: 200px;
         z-index: -1;
       }
     }
@@ -306,11 +307,13 @@
   import { mainViewAnimetion,inView,parallax } from '~/plugins/common.js'
   import Glitch from '@/components/Glitch'
   import ButtonCTA from '@/components/ButtonCTA'
+  import Github from '@/assets/icon/github.svg'
+  import BlankTarget from '@/assets/icon/blankTarget.svg'
 
   export default {
 
     components: {
-      Glitch,ButtonCTA
+      Glitch,ButtonCTA,BlankTarget,Github
     },
 
     asyncData(context) {
