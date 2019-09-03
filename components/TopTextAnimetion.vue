@@ -32,6 +32,7 @@
         @include font_family(primary);
         letter-spacing: 5px;
         font-size: 13vw;
+        opacity: 0;
         @include mediaQuery(desktopFollow) {
           font-size: 10vw;
         }
@@ -87,16 +88,36 @@
 <script>
 
   import { mainViewAnimetion } from '~/plugins/common.js'
+  import {mapGetters} from 'vuex'
 
   export default {
-    mounted() {
-      mainViewAnimetion({
-        idName: 'mainViewAnimetion',
-        callback: () => {
-          const subTarget = [].slice.call(document.querySelectorAll('.mainViewSubAnimetion'));
-          TweenMax.to( subTarget[0], .3, { opacity: 1, onComplete:() => {subTarget[1].classList.add('active')} }, .1);
+    computed: {
+      ...mapGetters({
+        done: 'load/done'
+      })
+    },
+    methods: {
+      animetionFire() {
+        mainViewAnimetion({
+          idName: 'mainViewAnimetion',
+          callback: () => {
+            const subTarget = [].slice.call(document.querySelectorAll('.mainViewSubAnimetion'));
+            TweenMax.to( subTarget[0], .3, { opacity: 1, onComplete:() => {subTarget[1].classList.add('active')} }, .1);
+          }
+        });
+      }
+    },
+    watch: {
+      done (val) {
+        if( val ){ 
+          this.animetionFire();
         }
-      });
+      }
+    },
+    mounted() {
+      if( this.$store.state.load.done ) {
+        this.animetionFire();
+      }
     }
   }
 

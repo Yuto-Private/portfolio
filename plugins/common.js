@@ -27,6 +27,7 @@ export function mainViewAnimetion({idName, delayTime, callback}) {
   });
 
   window.setTimeout(() => {
+    targetTextBox.style.opacity = 1;
     TweenMax.staggerTo( targetTextBox.children, .5, { opacity: 1, bottom: 0 }, .1, () => {
       callback ? callback() : null ;
     }); 
