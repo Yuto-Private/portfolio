@@ -65,7 +65,7 @@
       flex-direction: column;
       justify-content: center;
       opacity: 0;
-      transition: opacity .3s cubic-bezier(1, 0, .08, 1);
+      transition: opacity .6s cubic-bezier(1, 0, .08, 1);
       .profileView-flag & {
         opacity: 1;
       }
@@ -139,7 +139,7 @@
     asyncData(context) {
       return client.getEntries({
         content_type: 'detail',
-        order: '-sys.createdAt',
+        order: '-sys.updatedAt',
       })
       .then( ({ items }) => {
         return { posts: items }

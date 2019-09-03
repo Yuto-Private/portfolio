@@ -10,10 +10,18 @@
   text-decoration: none;
   color: #fff;
   &.mod-icon {
-    img {
+    svg {
       width: 17px;
       vertical-align: -1px;
       margin-right: 5px;
+      fill: #fff;
+    }
+  }
+  &.disabled {
+    pointer-events: none;
+    color: #616363;
+    svg {
+      fill: #616363;
     }
   }
   &:after {
@@ -32,11 +40,6 @@
       width: 100%;
     }
   }
-}
-
-a.disabled {
-  pointer-events: none;
-  color: #616363;
 }
 
 /*

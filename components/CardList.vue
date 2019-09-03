@@ -29,7 +29,6 @@
   .cardList {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     flex-wrap: wrap;
     @include mediaQuery {
       flex-direction: row;

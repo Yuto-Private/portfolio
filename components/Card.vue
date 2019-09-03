@@ -34,6 +34,7 @@
     }
     @include mediaQuery {
       width: 30%;
+      margin-right: 3%;
     }
 
     &_thumbnail {
