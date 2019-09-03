@@ -119,13 +119,14 @@
 </style>
 
 <script>
-  import { client } from '~/plugins/contentful.js'
+  import { createClient } from '~/plugins/contentful.js'
   import { inView } from '~/plugins/common.js'
   import TopTextAnimetion from '@/components/TopTextAnimetion'
   import Feature from '@/components/Feature'
   import CardList from '@/components/CardList'
   import Glitch from '@/components/Glitch'
-
+  const client = createClient()
+  
   export default {
 
     data() {
@@ -136,9 +137,9 @@
       TopTextAnimetion,Feature,CardList,Glitch
     },
 
-    asyncData(context) {
+    asyncData({ env, params }) {
       return client.getEntries({
-        content_type: 'detail',
+        content_type: env.CTF_BLOG_POST_TYPE_ID,
         order: '-sys.updatedAt',
       })
       .then( ({ items }) => {

@@ -301,7 +301,7 @@
 
 <script>
 
-  import { client } from '~/plugins/contentful.js'
+  import { createClient } from '~/plugins/contentful.js'
   import { BLOCKS } from '@contentful/rich-text-types';
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
   import { mainViewAnimetion,inView,parallax } from '~/plugins/common.js'
@@ -309,6 +309,7 @@
   import ButtonCTA from '@/components/ButtonCTA'
   import Github from '@/assets/icon/github.svg'
   import BlankTarget from '@/assets/icon/blankTarget.svg'
+  const client = createClient();
 
   export default {
 
@@ -316,10 +317,10 @@
       Glitch,ButtonCTA,BlankTarget,Github
     },
 
-    asyncData(context) {
+    asyncData({ env, params }) {
       return client.getEntries({
-        content_type: 'detail',
-        'fields.slag': context.params.slag
+        content_type: env.CTF_BLOG_POST_TYPE_ID,
+        'fields.slag': params.slag
       })
       .then( ({ items }) => {
         return { posts:items[0] }

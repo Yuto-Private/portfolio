@@ -65,20 +65,21 @@
 
 <script>
 
-  import { client } from '~/plugins/contentful.js'
+  import { createClient } from '~/plugins/contentful.js'
   import CardList from '@/components/CardList'
+  const client = createClient()
 
   export default {
     components: {
       CardList
     },
-    asyncData(context) {
+    asyncData({ env, params }) {
       return client.getEntries({
-        content_type: 'detail',
-        order: '-sys.createdAt',
+        content_type: env.CTF_BLOG_POST_TYPE_ID,
+        order: '-sys.updatedAt',
       })
-      .then( document => {
-        return { posts:document.items }
+      .then( ({ items }) => {
+        return { posts:items }
       })
       .catch(function(error) {
         console.log("Error getting document:", error);
