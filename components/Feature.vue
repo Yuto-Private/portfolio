@@ -83,10 +83,16 @@ export default {
       position: relative;
       width: 88%;
       z-index: 2;
-      margin-left: 30px;
+      margin-left: 5px;
+      @include mediaQuery {
+        margin-left: 30px;
+      }
       .reversal & {
         margin-left: auto;
-        margin-right: 30px;
+        margin-right: 5px;
+        @include mediaQuery {
+          margin-right: 5px;
+        }
       }
     }
 

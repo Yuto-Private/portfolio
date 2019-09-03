@@ -15,10 +15,8 @@
 
   .TopTextAnimetion {
 
-    @include font_family(primary);
     width: 100vw;
     height: 100vh;
-    padding: 3vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,8 +26,9 @@
 
     &_inner {
       h1 {
+        @include font_family(primary);
         letter-spacing: 5px;
-        font-size: 14vw;
+        font-size: 13vw;
         @include mediaQuery(desktopFollow) {
           font-size: 10vw;
         }

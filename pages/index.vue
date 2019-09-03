@@ -19,7 +19,7 @@
         />
         <div class='profile_detail'>
           <div class='profile_detail_inner'>
-            <h4>Yuto Takahashi</h4>
+            <h4>YUTO TAKAHASHI</h4>
             <dl class="profile_detail_item">
               <dt>SKILL SET</dt>
               <dd class="mod-iconList">
