@@ -16,13 +16,16 @@
   .TopTextAnimetion {
 
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     position: relative;
     letter-spacing: 5px;
+    @include mediaQuery {
+      height: 100vh;
+    }
 
     &_inner {
       h1 {

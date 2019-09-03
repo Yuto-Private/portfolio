@@ -27,6 +27,10 @@
           <dd>{{posts.fields.client}}</dd>
         </dl>
         <dl>
+          <dt>STATUS</dt>
+          <dd>{{posts.fields.status[0]}}</dd>
+        </dl>
+        <dl>
           <dt>LAUNCH</dt>
           <dd>{{posts.fields.launch}}</dd>
         </dl>
@@ -90,7 +94,7 @@
       }
       h1 {
         @include font_family(primary);
-        font-size: 40px;
+        font-size: 30px;
         line-height: 1.2;
         text-align: center;
         letter-spacing: 7px;
@@ -133,36 +137,40 @@
     }
 
     &_inner {
-      padding: 30px 0;
+      padding: 20px 0;
 
       dl {
-        margin-top: 20px;
+        margin-top: 10px;
         text-align: center;
-        @include mediaQuery(desktopFollow) {
-          display: flex;
-          text-align: left;
+        display: flex;
+        text-align: left;
+        @include mediaQuery {
+          margin-top: 20px;
         }
         &:first-child {
           margin-top: 0;
         }
         dt {
-          @include mediaQuery(desktopFollow) {
-            width: 112px;
+          font-size: 14px;
+          color: #9a9b9b;
+          @include mediaQuery {
+            font-size: 16px;
           }
         }
         dd {
-          margin-top: 10px;
-          font-size: 13px;
+          margin-top: 1px;
+          font-size: 12px;
+          padding-left: 10px;
           @include mediaQuery(desktopFollow) {
             margin-top: 0;
-            padding-left: 20px;
             font-size: 16px;
           }
           img {
-            width: 20px;
-            margin-right: 10px;
+            width: 15px;
+            margin-right: 6px;
             @include mediaQuery(desktopFollow) {
-              width: 25px;
+              width: 20px;
+              margin-right: 10px;
             }
             &:last-child {
               margin-right: 0;
