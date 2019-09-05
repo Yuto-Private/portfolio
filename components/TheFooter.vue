@@ -21,7 +21,7 @@
         items: [
           {
             name: 'wantedly',
-            url: 'https://github.com/Yuto-Private?tab=repositories'
+            url: 'https://www.wantedly.com/users/83561495'
           },
           {
             name: 'github',
@@ -29,15 +29,7 @@
           },
           {
             name: 'facebook',
-            url: 'https://github.com/Yuto-Private?tab=repositories'
-          },
-          {
-            name: 'twitter',
-            url: 'https://github.com/Yuto-Private?tab=repositories'
-          },
-          {
-            name: 'netlify',
-            url: 'https://github.com/Yuto-Private?tab=repositories'
+            url: 'https://www.facebook.com/yuto.takahashi.31'
           }
         ]
       }
