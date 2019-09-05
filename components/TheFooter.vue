@@ -44,10 +44,13 @@
     position: relative;
     z-index: 2;
     padding: 70px 0;
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    @include mediaQuery {
+      margin-top: 200px;
+    }
 
     &_snsLink {
       display: flex;

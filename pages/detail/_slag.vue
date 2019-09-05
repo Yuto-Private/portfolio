@@ -165,7 +165,10 @@
             font-size: 14px;
           }
           &.mod-technology {
-            margin-top: -3px;
+            margin-top: -1px;
+            @include mediaQuery {
+              margin-top: -3px;
+            }
           }
           img {
             width: 15px;
