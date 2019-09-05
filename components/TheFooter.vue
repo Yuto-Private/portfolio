@@ -44,7 +44,7 @@
     position: relative;
     z-index: 2;
     padding: 70px 0;
-    margin-top: 100px;
+    margin-top: 200px;
     display: flex;
     align-items: center;
     justify-content: center;

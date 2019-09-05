@@ -36,7 +36,7 @@
         </dl>
         <dl>
           <dt>TECHNOLOGY</dt>
-          <dd>
+          <dd class="mod-technology">
             <img v-for='item in posts.fields.technology' :key='item' :src="`/icon/${item}.svg`" />
           </dd>
         </dl>
@@ -56,7 +56,7 @@
       </div>
     </section>
 
-    <ButtonCTA :url='posts.fields.url' :caption='"このサイトを見る"' :styleType='"scale"' :target='"_blank"'/>
+    <ButtonCTA v-if='posts.fields.url' :url='posts.fields.url' :caption='"このサイトを見る"' :styleType='"scale"' :target='"_blank"'/>
 
   </article>
 
@@ -162,8 +162,10 @@
           font-size: 12px;
           padding-left: 10px;
           @include mediaQuery(desktopFollow) {
-            margin-top: 0;
-            font-size: 16px;
+            font-size: 14px;
+          }
+          &.mod-technology {
+            margin-top: -3px;
           }
           img {
             width: 15px;

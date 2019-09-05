@@ -107,7 +107,7 @@
           }
           img {
             width: 10%;
-            max-width: 40px;
+            max-width: 30px;
             margin: 10px 10px 0 0 ;
           }
         }
