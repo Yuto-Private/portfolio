@@ -35,9 +35,11 @@
     transition: .3s;
     transform: translateX(-50%);
   }
-  &:hover {
-    &:after {
-      width: 100%;
+  @include mediaQuery {
+    &:hover {
+      &:after {
+        width: 100%;
+      }
     }
   }
 }

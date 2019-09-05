@@ -68,12 +68,13 @@
         letter-spacing: 1.5px;
       }
     }
-
-    &:hover {
-      .card_thumbnail {
-        transform: rotateX(30deg) rotateY(-20deg) rotateZ(5deg);
-        &:after {
-          transform: translateX(20px) translateY(20px);
+    @include mediaQuery {
+      &:hover {
+        .card_thumbnail {
+          transform: rotateX(30deg) rotateY(-20deg) rotateZ(5deg);
+          &:after {
+            transform: translateX(20px) translateY(20px);
+          }
         }
       }
     }

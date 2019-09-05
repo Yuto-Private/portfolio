@@ -85,14 +85,16 @@
         transition: all 0.3s;
         border: 1px solid rgba(255, 255, 255, 0.5);
       }
-      &:hover {
-        &:before {
-          opacity: 1;
-          transform: scale(1, 1);
-        }
-        &:after {
-          transform: scale(1, .1);
-          opacity: 0;
+      @include mediaQuery {
+        &:hover {
+          &:before {
+            opacity: 1;
+            transform: scale(1, 1);
+          }
+          &:after {
+            transform: scale(1, .1);
+            opacity: 0;
+          }
         }
       }
     }

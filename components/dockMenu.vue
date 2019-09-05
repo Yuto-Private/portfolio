@@ -35,12 +35,14 @@
     opacity: 0.75;
     transform: rotate(-45deg);
   }
-  &:hover {
-    opacity: 1;
-    transform: rotate(135deg);
-    &:before {
+  @include mediaQuery {
+    &:hover {
       opacity: 1;
-      transform: rotate(-135deg);
+      transform: rotate(135deg);
+      &:before {
+        opacity: 1;
+        transform: rotate(-135deg);
+      }
     }
   }
 }

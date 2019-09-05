@@ -100,7 +100,7 @@
           font-weight: normal;
           text-align: justify;
           &.mod-iconList {
-            margin-top: 10px;
+            margin-top: 5px;
           }
           @include mediaQuery {
             font-size: 14px;
@@ -108,7 +108,7 @@
           img {
             width: 10%;
             max-width: 40px;
-            margin: 5px 15px 0 0 ;
+            margin: 10px 10px 0 0 ;
           }
         }
       }
@@ -130,7 +130,7 @@
   export default {
 
     data() {
-      return { items: [ 'html5','css3','javascript','php','git','wordpress','nuxt','react' ] }
+      return { items: [ 'html5','css3','javascript','php','git','nuxt','react','wordpress','contentful','netlify' ] }
     },
 
     components: {

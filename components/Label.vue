@@ -18,18 +18,19 @@
   .label {
 
     &_inner {
+      @include font_family(primary);
       span {
         position: absolute;
         top: 18px;
-        left: 7px;
+        left: 11px;
         z-index: 101;
         color: #fff;
-        font-size: 12px;
+        font-size: 14px;
         text-align: center;
         transform: rotate(-45deg);
         .mod-inprogress & {
-          top: 14px;
-          left: -6px;
+          top: 11px;
+          left: -2px;
         }
       }
       &:after {
