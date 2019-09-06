@@ -70,6 +70,18 @@
   const client = createClient()
 
   export default {
+    head() {
+      return {
+        title: `PORTFOLIO | YutoTakahashi Portforio`,
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'PORTFOLIO 制作実績一覧'
+          }
+        ]
+      }
+    },
     components: {
       CardList
     },

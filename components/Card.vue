@@ -27,7 +27,7 @@
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
     position: relative;
     opacity: 0;
-    bottom: -20px;
+    bottom: -40px;
     .cardView-flag & {
       opacity: 1;
       bottom: 0;

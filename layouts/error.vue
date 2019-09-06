@@ -35,8 +35,9 @@ export default {
       title: this.message,
       meta: [
         {
-          name: 'viewport',
-          content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'
+          hid: 'description',
+          name: 'description',
+          content: this.message
         }
       ]
     }
@@ -61,6 +62,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  @include font_family(primary);
 
   h2 {
     font-size: 17px;
@@ -92,18 +94,18 @@ export default {
 
   &_404 {
     .textGlitch {
-      width: 294px;
+      width: 231px;
       @include mediaQuery(desktopFollow) {
-        width: 513px;
+        width: 402px;
       }
     }
   }
 
   &_other {
     .textGlitch {
-      width: 142px;
+      width: 99px;
       @include mediaQuery(desktopFollow) {
-        width: 247px;
+        width: 171px;
       }
     }
   }

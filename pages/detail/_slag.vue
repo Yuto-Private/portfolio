@@ -326,6 +326,12 @@
 
   export default {
 
+    head() {
+      return {
+        title: `${this.posts.fields.title} | YutoTakahashi Portforio`
+      }
+    },
+
     components: {
       Glitch,ButtonCTA,BlankTarget,Github
     },
