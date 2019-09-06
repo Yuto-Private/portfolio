@@ -39,6 +39,9 @@ module.exports = {
         content: 'YutoTakahashi Portforio 制作実績とプロフィールを掲載。'
       }
     ],
+    script: [ 
+      { src: '//polyfill.io/v2/polyfill.min.js?features=IntersectionObserver' }
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Fjalla+One&display=swap' }
