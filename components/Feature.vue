@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted() {
-    inView({store:this.$store});
+    inView({className:'inView'});
     parallax(this.$store, '.js-parallax');
   }
 }

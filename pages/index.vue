@@ -151,7 +151,7 @@
     },
 
     mounted() {
-      inView({store:this.$store, className:'profileView', delayTime:1200});
+      inView({className:'profileView', delayTime:1200});
     }
   }
 

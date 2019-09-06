@@ -28,30 +28,29 @@ export function mainViewAnimetion({idName, delayTime, callback}) {
 
   window.setTimeout(() => {
     targetTextBox.style.opacity = 1;
-    TweenMax.staggerTo( targetTextBox.children, .5, { opacity: 1, bottom: 0 }, .1, () => {
+    TweenMax.staggerTo( targetTextBox.children, .4, { opacity: 1, bottom: 0 }, .1, () => {
       callback ? callback() : null ;
     }); 
   }, delay);
 }
 
 // inview 要素が領域内に入った時のアニメーション用ロジック
-export function inView ({ store, className, delayTime }) {
-  const triggerName = className || 'inView' ;
+export function inView ({ className, delayTime }) {
+  const triggerName = className;
   const delay = delayTime || 0 ;
   const inViewTarget = [].slice.call(document.querySelectorAll( `.${triggerName}` ));
 
-  addEventListenerMultiType(window, 'mounted scroll', () => { 
-    inViewTarget.forEach(element => {
-      const elementRects = element.getBoundingClientRect();
-      if( elementRects.top <= store.state.responsive.isDevice.size.h / 1.5 ){
+  const observer = new IntersectionObserver( entries => {
+    entries.forEach( entry => {
+      if (entry.isIntersecting) {
         window.setTimeout(() => {
-          element.classList.add(`${triggerName}-flag`);
+          entry.target.classList.add(`${triggerName}-flag`);
         }, delay);
       }
     });
-  });
+  }, { threshold: .35 });
 
-  hookEvent(); //mountedをイベントとして登録
+  inViewTarget.forEach( element => { observer.observe(element) });
 }
 
 // パララックス

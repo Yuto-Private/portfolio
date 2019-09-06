@@ -374,7 +374,7 @@
       }
     });
 
-    inView({store:this.$store, className:'detailView'});
+    inView({className:'detailView'});
     parallax(this.$store, '.js-parallax');
 
    }

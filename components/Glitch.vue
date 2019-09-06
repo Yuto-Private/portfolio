@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted() {
-    inView({store:this.$store, className:'glitchView', delayTime:this.animetionDelayTime});
+    inView({className:'glitchView', delayTime:this.animetionDelayTime});
   }
 }
 

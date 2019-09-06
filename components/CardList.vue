@@ -20,7 +20,7 @@
     components: { Card },
     props: ['posts','animetionDelayTime'],
     mounted() {
-      inView({store:this.$store, className:'cardView', delayTime: this.animetionDelayTime});
+      inView({className:'cardView', delayTime: this.animetionDelayTime});
     }
   }
 </script>
