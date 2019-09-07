@@ -40,7 +40,7 @@ export function inView ({ className, delayTime }) {
   const delay = delayTime || 0 ;
   const inViewTarget = [].slice.call(document.querySelectorAll( `.${triggerName}` ));
 
-  const observer = new IntersectionObserver( entries => {
+  const io = new IntersectionObserver( entries => {
     entries.forEach( entry => {
       if (entry.isIntersecting) {
         window.setTimeout(() => {
@@ -48,9 +48,9 @@ export function inView ({ className, delayTime }) {
         }, delay);
       }
     });
-  }, { threshold: .35 });
+  }, { threshold: 0.2 });
 
-  inViewTarget.forEach( element => { observer.observe(element) });
+  inViewTarget.forEach( element => { io.observe(element) });
 }
 
 // パララックス
