@@ -29,15 +29,20 @@ module.exports = {
   ** Headers of the page
   */
   head: {
+    htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#'
+    },
     title: 'YutoTakahashi Portforio' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { 
-        hid: 'description', 
-        name: 'description', 
-        content: 'YutoTakahashi Portforio 制作実績とプロフィールを掲載。'
-      }
+      { hid: 'description', name: 'description', content: 'YutoTakahashi Portforio 制作実績とプロフィールを掲載。' },
+      { hid: 'og:title', property: 'og:title', content: 'YutoTakahashi Portforio' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'YutoTakahashi Portforio' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://tkhsyt.me/' },
+      { hid: 'og:description', property: 'og:description', content: 'YutoTakahashi Portforio 制作実績とプロフィールを掲載。' },
+      { hid: 'og:image', property: 'og:image', content: '/images/ogImage-min.jpg' },
     ],
     script: [ 
       { src: '//polyfill.io/v2/polyfill.min.js?features=IntersectionObserver' }

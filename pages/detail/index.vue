@@ -74,11 +74,8 @@
       return {
         title: `PORTFOLIO | YutoTakahashi Portforio`,
         meta: [
-          {
-            hid: 'description',
-            name: 'description',
-            content: 'PORTFOLIO 制作実績一覧'
-          }
+          { hid: 'description', name: 'description', content: 'PORTFOLIO 制作実績一覧' },
+          { hid: 'og:url', property: 'og:url', content: 'https://tkhsyt.me/detail/' },
         ]
       }
     },

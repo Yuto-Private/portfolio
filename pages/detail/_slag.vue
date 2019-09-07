@@ -328,7 +328,11 @@
 
     head() {
       return {
-        title: `${this.posts.fields.title} | YutoTakahashi Portforio`
+        title: `${this.posts.fields.title} | YutoTakahashi Portforio`,
+        meta: [
+          { hid: 'description', name: 'description', content: `${this.posts.fields.title} 制作実績詳細` },
+          { hid: 'og:url', property: 'og:url', content: `https://tkhsyt.me/detail/${this.posts.fields.slag}/` },
+        ]
       }
     },
 

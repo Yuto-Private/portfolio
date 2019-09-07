@@ -81,17 +81,17 @@ export default {
 
     &_contents {
       position: relative;
-      width: 88%;
+      width: 86%;
       z-index: 2;
-      margin-left: 5px;
+      margin-left: 10px;
       @include mediaQuery {
         margin-left: 30px;
       }
       .reversal & {
         margin-left: auto;
-        margin-right: 5px;
+        margin-right: 10px;
         @include mediaQuery {
-          margin-right: 5px;
+          margin-right: 30px;
         }
       }
     }
